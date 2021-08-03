@@ -1,0 +1,24 @@
+             ### Auth Section 
+POST http://localhost:5000/auth/login 
+
+content-type: application/json
+
+{
+    "email": "mouadiken@gmail.com",
+    "password": "password"
+}         
+            
+            
+             ### Comment Section 
+
+GET http://localhost:5000/comments
+
+             ### POST Comment 
+POST http://localhost:5000/comments 
+Authorization:''
+content-type: application/json
+{
+    "description": "description",
+    "gifId": "610284bf81f2a832d4ceb620" ,
+    "userId": "61001d4e89594825041cee43"
+}
