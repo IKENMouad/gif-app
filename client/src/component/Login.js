@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 
 import { login } from '../actions/authActions';
 
 const Login = () => {
+    const history = useHistory()
     const [isSignIn, setIsSignIn] = useState(true);
     const [authRequest, setAuthRequest] = useState({
         email: '',
         password: '',
     });
     const dispatch = useDispatch();
-    const swithBtn = (value) => {
+    const swithBtn = (value) => { 
         setIsSignIn(value);
     };
 
@@ -18,6 +20,7 @@ const Login = () => {
         event.preventDefault();
         if (isSignIn) {
             dispatch(login(authRequest));
+            history.push('/')
         }
     };
 
@@ -100,7 +103,7 @@ const Login = () => {
                         </button>
                         {isSignIn ? (
                             <p className="forgot-password text-right">
-                                Forgot <a href="#">password?</a>
+                                Forgot <Link to="#">password?</Link>
                             </p>
                         ) : null}
                     </form>

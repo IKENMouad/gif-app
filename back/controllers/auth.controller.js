@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs')
 const jsonwebtoken = require('jsonwebtoken')
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
+const Role = require("../models/Role.model");
 
 const register = async (req, res) => {
     const { email, name, password, mobile } = req.body
@@ -13,7 +14,15 @@ const register = async (req, res) => {
         const salt = await bcryptjs.genSalt(10)
         const cryptedPassword = await bcryptjs.hash(password, salt);
         const token_verification = uuidv4()
-        const user = new User({ email, name, password: cryptedPassword, mobile, token_verification })
+        const roleUser = await Role.findOne({ name: "user" });
+        const user = new User({
+          email,
+          name,
+          password: cryptedPassword,
+          mobile,
+          token_verification,
+          roles: [roleUser],
+        });
         await user.save()
         if (user._id) {
             const { code } = await sendMail(user.email)
@@ -89,21 +98,33 @@ const confirmPass = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body
     if (email && password) {
-        const fetchedUser = await User.findOne({ email })
+        const fetchedUser = await User.findOne({ email }).populate( 'roles', 'name' )
         if (fetchedUser) {
             if (!fetchedUser.email_verification) {
                 return res.send('please confirm your account to sign in');
             } else {
                 let isSame = await bcryptjs.compare(password, fetchedUser.password)
                 if (isSame) {
-                    const token = jsonwebtoken.sign({ id: fetchedUser._id, email: fetchedUser.email }, 'secret')
+                    const token = jsonwebtoken.sign(
+                      { id: fetchedUser._id, email: fetchedUser.email },
+                      "secret",
+                      { expiresIn: "1day" }
+                    );
                     if (token) {
-                        return res.header('Authorization', token).status(200).send({ user: fetchedUser, token });
+                        const myUser = {
+                          id: fetchedUser._id,
+                          email: fetchedUser.email,
+                          name: fetchedUser.name,
+                          roles: fetchedUser.roles.map(({name}) => name)
+                        };
+                        return res.header('Authorization', token).status(200).send({    user:myUser, token });
                     }
                 } else {
                     return res.status(400).send({ code: 'failed', message: 'password not match' });
                 }
             }
+        }else{
+            return res.status(402).send({ code: 'failed', message:"no user "})
         }
     }
 }

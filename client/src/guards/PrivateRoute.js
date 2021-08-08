@@ -1,18 +1,42 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../helpers/auth.helper';
 
-function PrivateRoute({ component: Component, roles, ...rest }) {
-    return (
-        <Route {...rest} render={props => {
-            if (!localStorage.getItem('user')) {
-                // not logged in so redirect to login page with the return url
-                return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-            }
-
-            // logged in so return component
-            return <Component {...props} />
-        }} />
-    );
+export function AuthRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+           
+        if (!isAuthenticated()) {
+          return (
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          );
+        }
+        return <Component {...props} />;
+      }}
+    />
+  );
 }
 
-export default PrivateRoute
+export function AdminRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (!isAuthenticated() && isAuthenticated().roles.includes("admin")) {
+          return (
+            <Redirect
+              to={{ pathname: "/login", state: { from: props.location } }}
+            />
+          );
+        }
+        return <Component {...props} />;
+      }}
+    />
+  );
+}
+
+ 

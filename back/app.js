@@ -20,10 +20,12 @@ const authRoutes = require('./routes/auth.route')
 const userRoutes = require('./routes/user.route')
 const gifRoutes = require('./routes/gif.route');
 const categoryRoutes = require('./routes/category.route');
-const tagRoutes = require('./routes/tag.route');
+const tagRoutes = require('./routes/tag.route'); 
+const roleRoutes = require('./routes/role.route')
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/roles', roleRoutes);
 app.use('/gifs', gifRoutes);
 app.use('/tags', tagRoutes);
 app.use('/categories', categoryRoutes);
