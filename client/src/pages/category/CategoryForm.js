@@ -20,7 +20,7 @@ const CategoryForm = () => {
     };
 
     return (
-        <div className="container " style={{ marginTop: '100px' }}>
+        <div className="container" style={{ marginTop: '100px' }}>
             <div className="row">
                 <div className="col-md-6 mx-auto">
                     <div className="card">

@@ -10,9 +10,9 @@ const Login = () => {
     const [authRequest, setAuthRequest] = useState({
         email: '',
         password: '',
-    }); 
+    });
     const dispatch = useDispatch();
-    const swithBtn = (value) => { 
+    const swithBtn = (value) => {
         setIsSignIn(value);
     };
 
@@ -103,11 +103,7 @@ const Login = () => {
                         </button>
                         {isSignIn ? (
                             <p className="forgot-password text-right">
-<<<<<<< HEAD
-                                Forgot <Link to="/forgot-password">password?</Link>
-=======
                                 Forgot <Link to="#">password?</Link>
->>>>>>> origin/dev
                             </p>
                         ) : null}
                     </form>

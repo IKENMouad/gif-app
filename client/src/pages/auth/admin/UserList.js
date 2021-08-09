@@ -9,17 +9,17 @@ import { useHistory } from "react-router-dom";
 
 
 const UserList = () => {
-  
+
   const dispatch = useDispatch();
-  
+
   const userState = useSelector((state) => state.user);
-  
+
   const history = useHistory()
-  
+
   useEffect(() => {
     dispatch(fetchedUsersAction());
   }, [dispatch]);
-  
+
   const handleDetailsUser = ({ _id: id }) => {
     history.push("/users/" + id);
   };
@@ -50,7 +50,7 @@ const UserList = () => {
                     <td> {user.email}</td>
                     <td> {user.mobile}</td>
                     <td> {user.createdAt} </td>
-                    <td onClick={(e) => handleDetailsUser(user)}> deatils </td>
+                    <td className="pointer-cursor" onClick={(e) => handleDetailsUser(user)}> details </td>
                   </tr>
                 ))}
               </tbody>
