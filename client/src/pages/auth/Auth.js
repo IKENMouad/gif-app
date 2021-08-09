@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../../component/Login'
-import './auth.style.css'
+import './auth.style.scss'
 
 const Auth = () => {
     return (
