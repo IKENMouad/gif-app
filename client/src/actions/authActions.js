@@ -4,23 +4,23 @@ import { login as loginService } from '.././services/apiService'
 export const login = (data) => async (dispatch) => {
     try {
         const res = await loginService(data)
+         if(res.data){
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            localStorage.setItem('userInfo', JSON.stringify(res.data.user) )
+         }
         dispatch({ type: LOGIN, payload: res.data })
-        const token = res.data.token
-        const { _id, email } = res.data.user
-        if (res.data && token && _id && email) {
-            localStorage.setItem('token', token)
-            localStorage.setItem('userInfo', JSON.stringify({ _id, email }))
-        }
-        // return Promise.resolve(res.data);
+
+        return Promise.resolve(res.data);
 
     } catch (error) {
-        dispatch({ type: ERROR, payload: error.message })
-        // return Promise.reject(error);
+        dispatch({ type: ERROR, payload: error.message });
+        return Promise.reject(error);
     }
 }
 
+
 export const logout = () => async (dispatch) => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('userInfo')
-    dispatch({ type: LOGOUT })
-}
+  dispatch({ type: LOGOUT });
+  localStorage.removeItem("token");
+  localStorage.removeItem("userInfo");
+};

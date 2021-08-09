@@ -18,3 +18,8 @@ export const CREATE_TAG = "CREATE_TAG"
 export const FETCH_TAG = "FETCH_TAG"
 export const FETCH_TAGS = "FETCH_TAGS"
 export const UPDATE_TAG = "UPDATE_TAG"
+
+
+export const FETCH_USERS = "FETCH_USERS"
+export const FETCH_USER = "FETCH_USER"
+export const MAKE_USER_AS_ADMIN = "MAKE_USER_AS_ADMIN"

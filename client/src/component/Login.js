@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
 
 import { login } from '../actions/authActions';
 
 const Login = () => {
+    const history = useHistory()
     const [isSignIn, setIsSignIn] = useState(true);
     const [authRequest, setAuthRequest] = useState({
         email: '',
         password: '',
-    });
-    const history = useHistory()
+    }); 
     const dispatch = useDispatch();
-    const swithBtn = (value) => {
+    const swithBtn = (value) => { 
         setIsSignIn(value);
     };
 
     const onSubmit = (event) => {
         event.preventDefault();
         if (isSignIn) {
-            dispatch(login(authRequest)).then(() => {
-                history.push("/")
-            });
-        } 
+            dispatch(login(authRequest));
+            history.push('/')
+        }
     };
 
     return (
@@ -104,7 +103,11 @@ const Login = () => {
                         </button>
                         {isSignIn ? (
                             <p className="forgot-password text-right">
+<<<<<<< HEAD
                                 Forgot <Link to="/forgot-password">password?</Link>
+=======
+                                Forgot <Link to="#">password?</Link>
+>>>>>>> origin/dev
                             </p>
                         ) : null}
                     </form>

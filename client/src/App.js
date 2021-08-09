@@ -1,27 +1,33 @@
-import React from 'react'
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Navbar from './component/Navbar'
-import AuthRoute from './guards/AuthRoute';
-import Auth from './pages/auth/Auth';
-const Loading = React.lazy(() => import('./shared/Loading'))
-const CategoryList = React.lazy(() => import('./pages/category/CategoryList'))
-
-
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./component/Home";
+import Navbar from "./component/Navbar";
+import { AdminRoute } from "./guards/PrivateRoute";
+import UserList from "./pages/auth/admin/UserList";
+import Auth from "./pages/auth/Auth";
+import UserItem from "./pages/UserItem";
 
 const App = () => {
-    return (
-        <React.Suspense fallback={Loading} >
-            <Router>
-                <Navbar></Navbar> 
-                <Switch>
-                    <Route exact path="/auth" component={Auth} ></Route>
-                    <AuthRoute exact path="/categories" component={CategoryList}   ></AuthRoute>
-                </Switch> 
-            </Router>
+  return (
+    <Router>
+      <Navbar></Navbar>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/auth" component={Auth} />
+        <AdminRoute exact path="/admin/users" component={UserList} />
+        <Route exact path="/users/:userId" component={UserItem} />
+        <AdminRoute exact path="/admin/users/create" component={UserList} />
+        <AdminRoute exact path="/admin/categories" component={UserList} />
+        <AdminRoute
+          exact
+          path="/admin/categories/create"
+          component={UserList}
+        />
+        <AdminRoute exact path="/admin/roles/" component={UserList} />
+        <AdminRoute exact path="/admin/roles/create" component={UserList} />
+      </Switch>
+    </Router>
+  );
+};
 
-        </React.Suspense>
-    )
-}
-
-export default App
+export default App;
