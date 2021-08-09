@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchedUserAction } from "../actions/user.action";
 import Loading from "../shared/Loading";
-import styles from "./userItem.module.css";
+import styles from "./userItem.module.scss";
 
 const UserItem = (props) => {
   const params = useParams();
