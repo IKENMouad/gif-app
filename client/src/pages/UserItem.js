@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchedUserAction } from "../actions/user.action";
 import Loading from "../shared/Loading";
 import styles from "./userItem.module.css";
@@ -26,40 +26,23 @@ const UserItem = (props) => {
     <div>
       {userId && userState ? (
         <div className={styles.userProfile}>
-          <div className="row">
-            <div className="col-lg-7 mx-auto text-white text-center pt-5">
-              <h1 className="display-4">Bootstrap 4 profile page</h1>
-              <p className="lead mb-0">
-                Easily create a profile widget using bootstrap 4.
-              </p>
-              <p className="lead">
-                Snippet by
-                <a href="#" className="text-white">
-                  <u>Bootstrapious</u>
-                </a>
-              </p>
-            </div>
-          </div>
-          <div className="row py-5 px-4">
-            <div className="col-xl-4 col-md-6 col-sm-10 mx-auto">
+          <div className="row ">
+            <div className="col-xl-12 col-md-10 col-sm-10 mx-auto">
               <div className="bg-white shadow rounded overflow-hidden">
-                <div className="px-4 pt-0 pb-4 bg-dark">
+                <div className="px-4 py-5 bg-dark" style={{ padding: '7rem 0 !important' }} >
                   <div className="media align-items-end profile-header">
-                    <div className="profile mr-3">
-                      <img
+                    <div className="profile mr-3" style={{ position: 'absolute', top: '45%', left: '45%' }} >
+                      <img alt=""
                         src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-4.jpg"
                         width="130"
-                        className="rounded mb-2 img-thumbnail"
+                        className="my-2"
+                        style={{ borderRadius: '50%' }}
                       />
-                      <a href="#" className="btn btn-dark btn-sm btn-block">
-                        {" "}
-                        Edit profile{" "}
-                      </a>
+
                     </div>
                     <div className="media-body mb-5 text-white">
-                      <h4 className="mt-0 mb-0">Manuella Tarly</h4>
+                      <h4 className="mt-0 mb-0 user-name" >Manuella Tarly</h4>
                       <p className="small mb-4">
-                        {" "}
                         <i className="fa fa-map-marker mr-2"></i>San Farcisco
                       </p>
                     </div>
@@ -71,14 +54,12 @@ const UserItem = (props) => {
                     <li className="list-inline-item">
                       <h5 className="font-weight-bold mb-0 d-block">241</h5>
                       <small className="text-muted">
-                        {" "}
                         <i className="fa fa-picture-o mr-1"></i>Photos
                       </small>
                     </li>
                     <li className="list-inline-item">
                       <h5 className="font-weight-bold mb-0 d-block">84K</h5>
                       <small className="text-muted">
-                        {" "}
                         <i className="fa fa-user-circle-o mr-1"></i>Followers
                       </small>
                     </li>
@@ -88,9 +69,9 @@ const UserItem = (props) => {
                 <div className="py-4 px-4">
                   <div className="d-flex align-items-center justify-content-between mb-3">
                     <h5 className="mb-0">Recent photos</h5>
-                    <a href="#" className="btn btn-link text-muted">
+                    <Link to="#" className="btn btn-link text-muted">
                       Show all
-                    </a>
+                    </Link>
                   </div>
                   <div className="row">
                     <div className="col-lg-6 mb-2 pr-lg-1">

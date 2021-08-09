@@ -12,7 +12,7 @@ const Login = () => {
         password: '',
     });
     const dispatch = useDispatch();
-    const swithBtn = (value) => { 
+    const swithBtn = (value) => {
         setIsSignIn(value);
     };
 
