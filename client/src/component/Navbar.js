@@ -36,25 +36,10 @@ const Navbar = () => {
                 Users
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                to="#"
-                id="dropdownId"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
+            <li className="nav-item">
+              <Link className="nav-link" to="/gifs">
+                Gifs
               </Link>
-              <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <Link className="dropdown-item" to="#">
-                  Action 1
-                </Link>
-                <Link className="dropdown-item" to="#">
-                  Action 2
-                </Link>
-              </div>
             </li>
           </ul>
         </div>

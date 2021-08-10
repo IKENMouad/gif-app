@@ -28,20 +28,29 @@ const UserItem = (props) => {
         <div className={styles.userProfile}>
           <div className="row ">
             <div className="col-xl-12 col-md-10 col-sm-10 mx-auto">
-              <div className="bg-white shadow rounded overflow-hidden">
-                <div className="px-4 py-5 bg-dark" style={{ padding: '7rem 0 !important' }} >
+              <div className="bg-white shadow rounded ">
+                <div
+                  className={styles.header}
+                  style={{
+                    paddingTop: "8rem 0px ",
+                    paddingBottom: "8rem !important",
+                  }}
+                >
                   <div className="media align-items-end profile-header">
-                    <div className="profile mr-3" style={{ position: 'absolute', top: '45%', left: '45%' }} >
-                      <img alt=""
+                    <div
+                      className="profile mr-3"
+                      style={{ position: "absolute", top: "45%", left: "45%" }}
+                    >
+                      <img
+                        alt=""
                         src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-4.jpg"
                         width="130"
                         className="my-2"
-                        style={{ borderRadius: '50%' }}
+                        style={{ borderRadius: "50%" }}
                       />
-
                     </div>
                     <div className="media-body mb-5 text-white">
-                      <h4 className="mt-0 mb-0 user-name" >Manuella Tarly</h4>
+                      <h4 className="mt-0 mb-0 user-name">Manuella Tarly</h4>
                       <p className="small mb-4">
                         <i className="fa fa-map-marker mr-2"></i>San Farcisco
                       </p>

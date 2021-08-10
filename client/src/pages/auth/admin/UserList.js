@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Table from "react-bootstrap/Table";
@@ -7,14 +7,10 @@ import { fetchedUsersAction } from "../../../actions/user.action";
 import Loading from "../../../shared/Loading";
 import { useHistory } from "react-router-dom";
 
-
 const UserList = () => {
-
   const dispatch = useDispatch();
-
   const userState = useSelector((state) => state.user);
-
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchedUsersAction());
@@ -50,7 +46,12 @@ const UserList = () => {
                     <td> {user.email}</td>
                     <td> {user.mobile}</td>
                     <td> {user.createdAt} </td>
-                    <td className="pointer-cursor" onClick={(e) => handleDetailsUser(user)}> details </td>
+                    <td
+                      className="pointer-cursor"
+                      onClick={(e) => handleDetailsUser(user)}
+                    >
+                      details
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -66,5 +67,4 @@ const UserList = () => {
     </div>
   );
 };
-
 export default UserList;

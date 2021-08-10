@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require("mongoose")
 const cors = require('cors')
+const logger = require('morgan')
 
 // MIDDLEWARES
+// app.use(logger("dev"));
 app.use(express.json())
 app.use(cors())
-
 
 // DATABASE 
 mongoose

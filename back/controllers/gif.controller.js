@@ -4,20 +4,28 @@ const Gif = require("../models/Gif")
 const User = require("../models/User")
 
 const createGif = async (req, res) => {
-    let { title, description, tags, categoryId, } = req.body;
-    if (title) {
-        let category = await Category.findById(categoryId)
-        if (!category) {
-            category = await Category.findOne({ name: 'divers' })
-        }
-        const user = req.user.id
-        let gifToSave = new Gif({ title, description, user, tags, category })
-        gifToSave = await gifToSave.save()
-        return res.status(201).send({
-            code: gifToSave._id ? 'success' : 'failed',
-            item: gifToSave
-        })
-    }
+    let {
+      file,
+      body: { title, description },
+    } = req; 
+    console.log("file", file.mimetype.includes("png"));
+   return res.send({ originalname: file.originalname, title, description }); 
+
+
+    // let { title, description, tags, categoryId, } = req.body;
+    // if (title) {
+    //     let category = await Category.findById(categoryId)
+    //     if (!category) {
+    //         category = await Category.findOne({ name: 'divers' })
+    //     }
+    //     const user = req.user.id
+    //     let gifToSave = new Gif({ title, description, user, tags, category })
+    //     gifToSave = await gifToSave.save()
+    //     return res.status(201).send({
+    //         code: gifToSave._id ? 'success' : 'failed',
+    //         item: gifToSave
+    //     })
+    // }
 }
 
 const fetchGifs = async (req, res) => {
