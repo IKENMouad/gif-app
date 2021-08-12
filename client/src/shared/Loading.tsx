@@ -1,5 +1,5 @@
 import Spinner from "react-bootstrap/Spinner";
-import styles from "./loading.module.scss";
+import styles from "./shared.module.scss";
 import * as toastr from "toastr";
 
 const Loading = ({ error }: { error: any }) => {

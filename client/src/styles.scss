@@ -1,6 +1,17 @@
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~toastr/toastr.scss';
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~toastr/toastr.scss";
+
+* {
+  box-sizing: 0;
+}
 
 .pointer-cursor {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.status-warning {
+  background-color: rgb(161, 120, 43);
+}
+.status-primary {
+  background-color: #00B8FF
 }

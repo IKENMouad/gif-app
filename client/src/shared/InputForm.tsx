@@ -1,5 +1,3 @@
-import React from 'react'
-
 const InputForm = ({
   hasPlaceHolder = true,
   label = "",
@@ -51,4 +49,4 @@ const InputForm = ({
   );
 };
 
-export default InputForm
+export default InputForm;

@@ -7,28 +7,33 @@ import Gifs from "./pages/gif/Gifs";
 import UserItem from "./pages/UserItem";
 import AuthRoute from "./guards/AuthRoute";
 import AdminRoute from "./guards/AdminRoute";
+import SticherList from "./pages/sticher/StickerList";
+import { Fragment } from "react";
 
 const App = () => {
   return (
-    <Router>
-      <Navbar></Navbar>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/auth" component={Auth} />
-        <AuthRoute exact path="/gifs" component={Gifs} />
-        <AdminRoute exact path="/admin/users" component={UserList} />
-        <Route exact path="/users/:userId" component={UserItem} />
-        <AdminRoute exact path="/admin/users/create" component={UserList} />
-        <AdminRoute exact path="/admin/categories" component={UserList} />
-        <AdminRoute
-          exact
-          path="/admin/categories/create"
-          component={UserList}
-        />
-        <AdminRoute exact path="/admin/roles/" component={UserList} />
-        <AdminRoute exact path="/admin/roles/create" component={UserList} />
-      </Switch>
-    </Router>
+    <Fragment>
+      <Router>
+        <Navbar></Navbar>
+        <Switch>
+          <Route exact path="/auth" component={Auth} />
+          <Route exact path="/" component={Home} />
+          <AuthRoute exact path="/gifs" component={Gifs} />
+          <AuthRoute exact path="/stichers" component={SticherList} />
+          <AdminRoute exact path="/admin/users" component={UserList} />
+          <Route exact path="/users/:userId" component={UserItem} />
+          <AdminRoute exact path="/admin/users/create" component={UserList} />
+          <AdminRoute exact path="/admin/categories" component={UserList} />
+          <AdminRoute
+            exact
+            path="/admin/categories/create"
+            component={UserList}
+          />
+          <AdminRoute exact path="/admin/roles/" component={UserList} />
+          <AdminRoute exact path="/admin/roles/create" component={UserList} />
+        </Switch>
+      </Router>
+    </Fragment>
   );
 };
 

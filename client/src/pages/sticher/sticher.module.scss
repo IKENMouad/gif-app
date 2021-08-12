@@ -1,0 +1,23 @@
+$navy: 0, 25, 53;
+
+.sticherBody {
+  // background: RGB( var(--navy) );
+  background: black;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.sticherLeft {
+  color: green;
+  margin: 40px auto 0 40px;
+  max-width: 990px;
+  width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.sticherRight {
+  color: red;
+  width: 50rem;
+  margin-left: 30px;
+}

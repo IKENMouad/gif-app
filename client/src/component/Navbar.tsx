@@ -39,6 +39,11 @@ const Navbar = () => {
                 Gifs
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/stichers">
+              Stichers
+              </Link>
+            </li>
           </ul>
         </div>
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
